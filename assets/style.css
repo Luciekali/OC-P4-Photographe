@@ -15,21 +15,26 @@ header {
 
 .header-text {
 	background-color: white;
-	position: fixed;
+	position: sticky;
 	top: 0;
-	right: 0;
-	left: 0;
 	z-index: 1000;
 	display: flex;
 	justify-content: space-between;
 	padding-block: 30px;
+	padding-inline: 100px;
 	align-items: center;
-
 }
 
 header h1 {
 	font-size: 26px;
-	padding-left: 100px;
+}
+
+nav,
+.nav {
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0;
+	margin-bottom: 0;
 }
 
 nav ul {
@@ -37,16 +42,17 @@ nav ul {
 	list-style-type: none;
 	font-size: 14px;
 	margin-bottom: 0;
-	padding-right: 100px;
 }
 
-nav li {
+nav li,
+.nav li {
 	padding-inline: 10px;
 }
 
 .nav-link {
 	text-decoration: none;
-	color: #000
+	color: #000;
+	padding: 0;
 }
 
 .nav-link img {
@@ -126,13 +132,14 @@ nav li {
 .nav-pills .nav-link.active,
 .nav-pills .nav-link.active-tag,
 .nav-pills .show>.nav-link {
-	color: #fff;
+	color: black;
 	background-color: #BEB45A;
 	border-radius: 0;
 }
 
 .nav-pills .nav-link {
 	color: #000;
+	padding: 0.5rem 1rem;
 }
 
 .item-column {
@@ -176,8 +183,10 @@ nav li {
 }
 
 .quote__text {
-	font-family: Spectral;
+	font-family: 'Spectral';
 	font-style: italic;
+	font-size: calc(1.375rem + 1.5vw);
+	line-height: 1.2;
 	font-weight: 300;
 
 }
@@ -192,6 +201,11 @@ nav li {
 	margin: auto;
 	background-color: #A8D5D8;
 	position: relative;
+}
+
+#services h2 {
+	text-align: center;
+	padding-block: 2em;
 }
 
 #services .container::before {
@@ -209,10 +223,9 @@ nav li {
 	justify-content: space-between;
 	display: flex;
 	padding: 2em 0;
-
 }
 
-.service {
+.service__card {
 	background-color: white;
 	max-width: 390px;
 	width: 30%;
@@ -223,6 +236,7 @@ nav li {
 	justify-content: space-between;
 	z-index: 1;
 }
+
 
 #contact {
 	margin: auto;
@@ -282,6 +296,34 @@ input[type="submit"] {
 	padding: .5em 1em
 }
 
+.screen-reader {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+	color: black;
+}
+
+.screen-reader-focusable:active,
+.screen-reader-focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	white-space: normal;
+	width: auto;
+}
+
+.visually-hidden {
+	color: black;
+}
+
 @media all and (max-width: 1180px) {
 	.picture {
 		flex: 2;
@@ -306,7 +348,6 @@ input[type="submit"] {
 @media all and (max-width: 1000px) {
 	#about {
 		flex-direction: column;
-
 	}
 
 	.picture {
@@ -328,20 +369,16 @@ input[type="submit"] {
 		margin-top: 1em;
 	}
 
-	#services .container {
-		flex-direction: column;
-	}
-
 	.gallery-item {
 		width: 240px;
 		height: 240px;
 	}
 
-	.service {
+	.service__card {
 		width: 100%;
 		max-width: 100%;
 		height: auto;
-		margin: 2em 0
+		margin: 2em 0;
 	}
 
 	.service__description {
@@ -376,18 +413,22 @@ input[type="submit"] {
 }
 
 @media all and (max-width: 650px) {
-	.top-header {
+	.header-text {
 		flex-direction: column;
 		padding-inline: 0;
 	}
 
-	.top-header .nav,
-	.top-header .nav ul {
+	.header-text h1 {
+		padding-left: 0;
+	}
+
+	.header-text .nav,
+	.header-text .nav ul {
 		width: 100%;
 		padding: 0 0 0 0;
 	}
 
-	.top-header .nav li {
+	.header-text .nav li {
 		flex: 1;
 		padding-block: 1em;
 		text-align: center;
@@ -402,12 +443,8 @@ input[type="submit"] {
 		height: 150px;
 	}
 
-	#services .container {
-		align-items: center;
-	}
-
 	.service {
-		max-width: 90%;
+		max-width: 540px;
 	}
 
 	#about,
